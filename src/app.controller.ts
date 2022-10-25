@@ -10,9 +10,16 @@ export class AppController {
     return null;
   }
 
-  @Post()
-  scenario1(@Body() numbersInfo: number[]): void {
+  @Post("/spawn-scenario-1")
+  spawn_scenario1(@Body() numbersInfo: number[]): void {
     const numbers = [parseInt(numbersInfo["a"]), parseInt(numbersInfo["b"])];
-    this.appService.scenario1(numbers);
+    this.appService.spawn_scenario1(numbers);
+  }
+
+  @Post("/shell-scenario-1")
+  shell_scenario1(@Body() numbersInfo: string[]): void {
+    const numbers = [numbersInfo["a"], numbersInfo["b"]];
+
+    this.appService.shell_scenario1(numbers);
   }
 }
