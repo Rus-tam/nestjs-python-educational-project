@@ -1,5 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Body, Controller, Get, Post } from "@nestjs/common";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -7,6 +7,12 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return null;
+  }
+
+  @Post()
+  scenario1(@Body() numbersInfo: number[]): void {
+    const numbers = [parseInt(numbersInfo["a"]), parseInt(numbersInfo["b"])];
+    this.appService.scenario1(numbers);
   }
 }
